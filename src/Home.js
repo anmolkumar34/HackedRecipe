@@ -1,5 +1,6 @@
 import React,{Component} from 'react'
 import Card from "./Card"
+import axios from "axios"
 
 class Home extends Component{
     constructor(props){
@@ -12,10 +13,10 @@ class Home extends Component{
     }
     
     componentDidMount(){
-        fetch('http://starlord.hackerearth.com/recipe').then(res => res.json()).then(data => { 
+        axios.get('http://starlord.hackerearth.com/recipe').then(res => { 
           this.setState({
             isLoaded :true,
-            menuItems : data
+            menuItems : res.data
           })
         })
     }
